@@ -1,6 +1,5 @@
 import './globals.css';
-import 'fumadocs-ui/style.css';
-import type { Metadata, Viewport } from 'next';
+import type { Metadata, Viewport} from 'next';
 import { Inter, Geist_Mono } from 'next/font/google';
 import { RootProvider } from 'fumadocs-ui/provider';
 
