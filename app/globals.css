@@ -1,0 +1,129 @@
+/* Tailwind CSS directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Custom Properties for neutral theme */
+@layer base {
+  :root {
+    /* Light mode colors */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.6%;
+
+    /* Semantic color tokens */
+    --primary: 0 0% 3.6%;
+    --secondary: 0 0% 96.1%;
+    --muted: 0 0% 89.8%;
+    --muted-foreground: 0 0% 45.1%;
+
+    /* Focus state */
+    --ring: 0 0% 3.6%;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      /* Dark mode colors */
+      --background: 0 0% 3.6%;
+      --foreground: 0 0% 98%;
+
+      /* Semantic color tokens */
+      --primary: 0 0% 98%;
+      --secondary: 0 0% 14.3%;
+      --muted: 0 0% 25%;
+      --muted-foreground: 0 0% 63.9%;
+
+      /* Focus state */
+      --ring: 0 0% 98%;
+    }
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Smooth transitions for theme switching */
+  html {
+    @apply transition-colors duration-300;
+  }
+
+  /* Heading styles */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-semibold text-foreground;
+  }
+
+  /* Code block styles */
+  code {
+    @apply rounded bg-muted px-1.5 py-0.5 font-mono text-sm;
+  }
+
+  pre {
+    @apply overflow-x-auto rounded-lg bg-muted p-4;
+  }
+
+  pre code {
+    @apply bg-transparent px-0 py-0;
+  }
+
+  /* Link styles */
+  a {
+    @apply text-primary underline-offset-4 hover:underline;
+  }
+
+  /* Button reset */
+  button {
+    @apply transition-colors;
+  }
+}
+
+/* Fumadocs integration styles */
+@layer components {
+  /* Documentation container */
+  .docs-container {
+    @apply prose prose-neutral dark:prose-invert max-w-4xl;
+  }
+
+  /* Code highlight for emphasis */
+  .code-highlight {
+    @apply rounded bg-yellow-100 px-1 py-0.5 dark:bg-yellow-900/30;
+  }
+}
+
+/* Utility classes */
+@layer utilities {
+  /* Antialiased text rendering */
+  .antialiased {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Print styles */
+@media print {
+  body {
+    @apply bg-white text-black;
+  }
+
+  a {
+    @apply no-underline;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply break-after-avoid;
+  }
+
+  code {
+    @apply break-words;
+  }
+}
+

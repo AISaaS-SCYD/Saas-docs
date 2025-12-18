@@ -1,0 +1,243 @@
+---
+title: API Documentation
+description: Complete API reference for our platform
+---
+
+## API Overview
+
+Our REST API provides programmatic access to all platform features. All requests are made to `https://api.example.com/v1` and return JSON responses.
+
+### Base URL
+
+```
+https://api.example.com/v1
+```
+
+### Authentication
+
+All API requests require authentication using Bearer tokens:
+
+```bash
+Authorization: Bearer YOUR_API_KEY
+```
+
+### Rate Limits
+
+| Plan | Requests/Minute | Burst |
+|------|----------------|-------|
+| Free | 100 | 120 |
+| Pro | 1,000 | 1,200 |
+| Enterprise | Custom | Custom |
+
+## Core Endpoints
+
+### Users
+
+#### Get Current User
+
+Retrieve information about the authenticated user.
+
+```http
+GET /v1/user
+```
+
+**Response**
+
+```json
+{
+  "id": "user_123",
+  "email": "user@example.com",
+  "name": "John Doe",
+  "plan": "pro",
+  "created_at": "2024-01-15T10:30:00Z"
+}
+```
+
+#### Update User
+
+Update user profile information.
+
+```http
+PATCH /v1/user
+```
+
+**Request Body**
+
+```json
+{
+  "name": "Jane Doe",
+  "email": "jane@example.com"
+}
+```
+
+**Response**
+
+```json
+{
+  "id": "user_123",
+  "email": "jane@example.com",
+  "name": "Jane Doe",
+  "updated_at": "2024-12-19T10:30:00Z"
+}
+```
+
+### Projects
+
+#### List Projects
+
+Get all projects for the authenticated user.
+
+```http
+GET /v1/projects
+```
+
+**Query Parameters**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| limit | integer | Number of results (default: 20) |
+| offset | integer | Pagination offset (default: 0) |
+| sort | string | Sort order: `created_at`, `name` |
+
+**Response**
+
+```json
+{
+  "data": [
+    {
+      "id": "proj_123",
+      "name": "My Project",
+      "description": "Project description",
+      "created_at": "2024-01-15T10:30:00Z"
+    }
+  ],
+  "pagination": {
+    "total": 45,
+    "limit": 20,
+    "offset": 0
+  }
+}
+```
+
+#### Create Project
+
+Create a new project.
+
+```http
+POST /v1/projects
+```
+
+**Request Body**
+
+```json
+{
+  "name": "New Project",
+  "description": "Project description"
+}
+```
+
+**Response**
+
+```json
+{
+  "id": "proj_456",
+  "name": "New Project",
+  "description": "Project description",
+  "created_at": "2024-12-19T10:30:00Z"
+}
+```
+
+#### Get Project
+
+Retrieve a specific project.
+
+```http
+GET /v1/projects/{project_id}
+```
+
+**Response**
+
+```json
+{
+  "id": "proj_123",
+  "name": "My Project",
+  "description": "Project description",
+  "created_at": "2024-01-15T10:30:00Z",
+  "updated_at": "2024-12-19T10:30:00Z"
+}
+```
+
+#### Delete Project
+
+Delete a project.
+
+```http
+DELETE /v1/projects/{project_id}
+```
+
+**Response**
+
+```json
+{
+  "success": true,
+  "message": "Project deleted successfully"
+}
+```
+
+## Error Handling
+
+The API uses standard HTTP status codes:
+
+| Code | Description |
+|------|-------------|
+| 200 | Success |
+| 201 | Created |
+| 400 | Bad Request |
+| 401 | Unauthorized |
+| 403 | Forbidden |
+| 404 | Not Found |
+| 429 | Rate Limit Exceeded |
+| 500 | Server Error |
+
+**Error Response Format**
+
+```json
+{
+  "error": {
+    "code": "invalid_request",
+    "message": "The request is missing required parameters",
+    "details": {
+      "field": "name",
+      "reason": "required"
+    }
+  }
+}
+```
+
+## SDKs
+
+Official SDKs are available for:
+
+- [Node.js](https://github.com/example/node-sdk)
+- [Python](https://github.com/example/python-sdk)
+- [Go](https://github.com/example/go-sdk)
+- [Ruby](https://github.com/example/ruby-sdk)
+
+## Webhooks
+
+Configure webhooks to receive real-time updates:
+
+```http
+POST /v1/webhooks
+```
+
+**Request Body**
+
+```json
+{
+  "url": "https://your-app.com/webhook",
+  "events": ["project.created", "project.updated"]
+}
+```
+
+For more details, see our [Webhooks Guide](/docs/guides/webhooks).

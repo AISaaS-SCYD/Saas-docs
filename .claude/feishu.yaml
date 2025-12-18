@@ -1,0 +1,24 @@
+# 飞书集成配置
+# 项目: SaaS Docs
+
+# 默认通知目标
+notification:
+  type: "chat"  # chat | user | none
+  targets:
+    - chat_id: "oc_74ad6b73246a7c3ac34eeb35411b1dfd"
+      name: "MCP通知群"
+
+# 多维表格应用 Token
+bitable_app_token: "UiaVbSpyQaKtYqsCXFcchl0cnOe"
+
+# 任务表 ID
+bitable_table_id: "tblsXw0Hhp63wiLe"
+
+# 多维表格 URL
+bitable_table_url: "https://scydcn888.feishu.cn/base/UiaVbSpyQaKtYqsCXFcchl0cnOe"
+
+# 任务表的字段映射
+task_fields:
+  status: "Status"
+  description: "Description"
+  assignee: "Assignee"

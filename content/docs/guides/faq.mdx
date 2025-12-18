@@ -1,0 +1,150 @@
+---
+title: Frequently Asked Questions
+description: Common questions and answers
+---
+
+## Frequently Asked Questions
+
+### General
+
+#### What is this platform?
+
+Our platform provides a comprehensive API and tools to help developers build modern applications quickly and efficiently.
+
+#### How do I get started?
+
+Check out our [Getting Started Guide](/docs/getting-started) for a step-by-step walkthrough.
+
+#### Is there a free tier?
+
+Yes! Our free tier includes:
+- 100 requests per minute
+- Access to core API endpoints
+- Community support
+
+### API & Authentication
+
+#### How do I get an API key?
+
+1. Log in to your dashboard
+2. Navigate to Settings > API Keys
+3. Click "Generate New Key"
+
+See the [Authentication Guide](/docs/guides/authentication) for details.
+
+#### Can I use multiple API keys?
+
+Yes! We recommend creating separate keys for:
+- Development
+- Staging
+- Production
+
+This makes key rotation and management easier.
+
+#### What happens if my API key is compromised?
+
+Immediately revoke the compromised key in your dashboard and generate a new one. Update your applications with the new key.
+
+### Rate Limits
+
+#### What are the rate limits?
+
+| Plan | Requests/Minute | Burst |
+|------|----------------|-------|
+| Free | 100 | 120 |
+| Pro | 1,000 | 1,200 |
+| Enterprise | Custom | Custom |
+
+#### What happens when I hit the rate limit?
+
+You'll receive a `429 Too Many Requests` response. Implement exponential backoff to handle this gracefully. See [Best Practices](/docs/guides/best-practices).
+
+#### Can I increase my rate limit?
+
+Yes! Upgrade your plan in the dashboard or contact sales for custom enterprise limits.
+
+### Billing
+
+#### How does billing work?
+
+We bill based on your plan tier and usage:
+- Free: $0/month
+- Pro: $49/month
+- Enterprise: Custom pricing
+
+#### Can I change plans?
+
+Yes, you can upgrade or downgrade at any time from your dashboard.
+
+#### Do unused requests roll over?
+
+No, rate limits reset every minute. However, we offer burst allowances for temporary spikes.
+
+### Technical
+
+#### Which programming languages are supported?
+
+Our REST API works with any language. We provide official SDKs for:
+- JavaScript/Node.js
+- Python
+- Go
+- Ruby
+
+#### Do you support webhooks?
+
+Yes! Configure webhooks in your dashboard to receive real-time updates.
+
+#### What about CORS?
+
+Our API supports CORS for browser-based applications. Make sure to use your API key securely and consider using a backend proxy for production.
+
+#### How do I handle errors?
+
+Implement comprehensive error handling. See our [Best Practices Guide](/docs/guides/best-practices) for examples.
+
+### Support
+
+#### How do I get help?
+
+We offer multiple support channels:
+- Documentation (you're here!)
+- Community forum
+- Email support (Pro and Enterprise)
+- Priority support (Enterprise only)
+
+#### What's your SLA?
+
+- Free: Best effort
+- Pro: 99.9% uptime
+- Enterprise: 99.99% uptime with custom SLAs available
+
+#### Can I request new features?
+
+Absolutely! We welcome feedback. Submit feature requests through:
+- Community forum
+- Support portal
+- Direct email (Enterprise)
+
+### Security
+
+#### How is my data protected?
+
+We implement:
+- Encryption at rest and in transit
+- Regular security audits
+- SOC 2 Type II compliance
+- GDPR compliance
+
+#### Do you store my API requests?
+
+We log requests for debugging and analytics but don't store request bodies. Logs are retained for 30 days.
+
+#### Is two-factor authentication available?
+
+Yes! Enable 2FA in your account settings for enhanced security.
+
+## Still have questions?
+
+- Check our [API Documentation](/docs/api)
+- Visit our [Support Portal](https://support.example.com)
+- Email us at support@example.com

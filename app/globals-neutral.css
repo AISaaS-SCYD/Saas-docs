@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+  @apply border-neutral-200;
+}
+
+html {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+:root {
+  /* Neutral Theme - Light Mode */
+  --background: 0 0% 100%;
+  --foreground: 0 0% 12%;
+  --secondary: 0 0% 50%;
+  --secondary-text: 0 0% 45%;
+  --muted-text: 0 0% 55%;
+  --border: 0 0% 90%;
+  --accent: 217 91% 60%;
+  --accent-foreground: 0 0% 100%;
+
+  /* Fumadocs specific colors */
+  --fd-background: 0 0% 100%;
+  --fd-foreground: 0 0% 12%;
+  --fd-muted: 0 0% 50%;
+  --fd-muted-foreground: 0 0% 32%;
+  --fd-border: 0 0% 90%;
+  --fd-ring: 217 91% 60%;
+  --fd-primary: 217 91% 60%;
+  --fd-primary-foreground: 0 0% 100%;
+  --fd-secondary: 0 0% 96%;
+  --fd-secondary-foreground: 0 0% 12%;
+  --fd-accent: 217 91% 60%;
+  --fd-accent-foreground: 0 0% 100%;
+  --fd-destructive: 0 84% 60%;
+  --fd-destructive-foreground: 0 0% 100%;
+  --fd-card: 0 0% 100%;
+  --fd-card-foreground: 0 0% 12%;
+}
+
+html.dark {
+  /* Neutral Theme - Dark Mode */
+  --background: 0 0% 8%;
+  --foreground: 0 0% 98%;
+  --secondary: 0 0% 60%;
+  --secondary-text: 0 0% 70%;
+  --muted-text: 0 0% 55%;
+  --border: 0 0% 20%;
+  --accent: 217 91% 60%;
+  --accent-foreground: 0 0% 8%;
+
+  /* Fumadocs specific colors - Dark */
+  --fd-background: 0 0% 8%;
+  --fd-foreground: 0 0% 98%;
+  --fd-muted: 0 0% 50%;
+  --fd-muted-foreground: 0 0% 85%;
+  --fd-border: 0 0% 20%;
+  --fd-ring: 217 91% 60%;
+  --fd-primary: 217 91% 60%;
+  --fd-primary-foreground: 0 0% 8%;
+  --fd-secondary: 0 0% 15%;
+  --fd-secondary-foreground: 0 0% 98%;
+  --fd-accent: 217 91% 60%;
+  --fd-accent-foreground: 0 0% 8%;
+  --fd-destructive: 0 84% 60%;
+  --fd-destructive-foreground: 0 0% 8%;
+  --fd-card: 0 0% 12%;
+  --fd-card-foreground: 0 0% 98%;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground transition-colors;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  a {
+    @apply text-accent hover:text-accent/80 transition-colors;
+  }
+
+  button {
+    @apply transition-colors;
+  }
+
+  code {
+    @apply rounded bg-neutral-100 px-1.5 py-0.5 font-mono text-sm;
+  }
+
+  html.dark code {
+    @apply bg-neutral-800;
+  }
+}
+
+@layer components {
+  .fd-card {
+    @apply rounded-lg border border-border bg-card p-6 shadow-sm;
+  }
+
+  .fd-button {
+    @apply inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors;
+  }
+
+  .fd-button-primary {
+    @apply bg-accent text-accent-foreground hover:bg-accent/90;
+  }
+
+  .fd-button-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+  }
+
+  .fd-input {
+    @apply rounded-md border border-border bg-background px-3 py-2 text-foreground placeholder:text-muted-text focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent;
+  }
+
+  .fd-heading-1 {
+    @apply text-4xl font-bold tracking-tight text-foreground;
+  }
+
+  .fd-heading-2 {
+    @apply text-3xl font-bold tracking-tight text-foreground;
+  }
+
+  .fd-heading-3 {
+    @apply text-2xl font-bold tracking-tight text-foreground;
+  }
+
+  .fd-heading-4 {
+    @apply text-xl font-semibold tracking-tight text-foreground;
+  }
+
+  .fd-body {
+    @apply text-base leading-7 text-foreground;
+  }
+
+  .fd-muted {
+    @apply text-sm text-muted-text;
+  }
+}
+
+/* Fumadocs custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--fd-secondary));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--fd-muted));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--fd-muted) / 0.8);
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: hsl(var(--fd-secondary));
+}
+
+/* Syntax highlighting for code blocks */
+.shiki {
+  @apply rounded-lg border border-border bg-secondary p-4 overflow-x-auto;
+}
+
+html.dark .shiki {
+  @apply border-neutral-700 bg-neutral-950;
+}
+
+/* Fumadocs nav and sidebar styling */
+.nd-nav {
+  @apply border-b border-border;
+}
+
+.nd-sidebar {
+  @apply border-r border-border;
+}
