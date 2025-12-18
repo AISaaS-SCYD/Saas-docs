@@ -3,16 +3,6 @@ import type { Metadata } from 'next';
 import { DocsPage, DocsBody } from 'fumadocs-ui/page';
 import { notFound } from 'next/navigation';
 
-/**
- * 文档页面组件
- *
- * 功能特性：
- * - 自动生成目录（TOC）
- * - 面包屑导航
- * - GitHub编辑链接
- * - 最后更新时间
- * - 页脚导航（上一页/下一页）
- */
 export default async function Page({
   params,
 }: {
@@ -23,34 +13,10 @@ export default async function Page({
 
   if (!page) notFound();
 
-  const MDX = page.data.body;
-
-  // 构建GitHub编辑URL
-  const githubEditUrl = `https://github.com/yourusername/saas-docs/blob/main/content/docs/${page.file.path}`;
+  const Content = (page.data as any).default || page.data;
 
   return (
-    <DocsPage
-      toc={page.data.toc}
-      full={page.data.full}
-      tableOfContent={{
-        enabled: true,
-        style: 'clerk',
-      }}
-      editOnGithub={{
-        owner: 'yourusername',
-        repo: 'saas-docs',
-        sha: 'main',
-        path: `content/docs/${page.file.path}`,
-      }}
-      lastUpdate={page.data.lastModified ?? new Date()}
-      breadcrumb={{
-        enabled: true,
-        includePage: true,
-      }}
-      footer={{
-        enabled: true,
-      }}
-    >
+    <DocsPage>
       <DocsBody>
         <h1>{page.data.title}</h1>
         {page.data.description && (
@@ -58,7 +24,7 @@ export default async function Page({
             {page.data.description}
           </p>
         )}
-        <MDX />
+        {typeof Content === 'function' ? <Content /> : <div>{JSON.stringify(page.data)}</div>}
       </DocsBody>
     </DocsPage>
   );

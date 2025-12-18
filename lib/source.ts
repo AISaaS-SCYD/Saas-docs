@@ -14,10 +14,6 @@ import { createSearchAPI } from 'fumadocs-core/search/server';
 export const source = loader({
   baseUrl: '/docs',
   source: toFumadocsSource(docs, meta),
-  pageTree: {
-    attachFile: true,
-    attachFolder: true,
-  },
   icon: (icon) => {
     // 支持自定义图标映射
     const iconMap: Record<string, string> = {
@@ -41,8 +37,8 @@ export const searchAPI = createSearchAPI('advanced', {
   indexes: docs.map((page) => ({
     id: page.url,
     url: page.url,
-    title: page.data.title,
-    description: page.data.description ?? '',
-    structuredData: page.data.structuredData,
+    title: page.data?.title || 'Untitled',
+    description: page.data?.description || '',
+    structuredData: page.data?.structuredData,
   })),
 });
